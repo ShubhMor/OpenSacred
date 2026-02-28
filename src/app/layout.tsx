@@ -105,9 +105,8 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   verification: {
-    // Add your Google / Bing verification tokens here when you have them
-    // google: "YOUR_GOOGLE_VERIFICATION_TOKEN",
-    // other: { "msvalidate.01": "YOUR_BING_TOKEN" },
+
+google: "5d0772d4cc6e725a",
   },
 };
 
