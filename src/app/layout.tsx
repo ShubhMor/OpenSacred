@@ -104,9 +104,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
-  verification: {
 
-google: "5d0772d4cc6e725a",
+  verification: {
+    google: "5d0772d4cc6e725a",
   },
 };
 
