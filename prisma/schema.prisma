@@ -1,0 +1,71 @@
+// Bhagavad Gita App — Prisma Schema
+// Covers server-side persistence for verse likes and commentary votes.
+// Client-side localStorage is used as a fast-path fallback.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Tracks how many users liked a verse (aggregate).
+// verseId format: "{chapterId}-{verseNumber}" e.g. "2-47"
+model VerseLike {
+  id        String   @id @default(cuid())
+  verseId   String   @unique
+  likeCount Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([verseId])
+}
+
+// Tracks per-session or per-user verse like status.
+model UserVerseLike {
+  id        String   @id @default(cuid())
+  verseId   String
+  sessionId String   // anonymous session token
+  createdAt DateTime @default(now())
+
+  @@unique([verseId, sessionId])
+  @@index([verseId])
+}
+
+// Aggregate counts for commentary helpfulness votes.
+// commentaryId format: "{verseId}-{scholar-slug}" e.g. "2-47-ramanuja"
+model CommentaryVote {
+  id           String   @id @default(cuid())
+  commentaryId String   @unique
+  likeCount    Int      @default(0)
+  dislikeCount Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([commentaryId])
+}
+
+// Per-session commentary vote to enforce one-vote-per-user rule.
+model UserCommentaryVote {
+  id           String   @id @default(cuid())
+  commentaryId String
+  sessionId    String
+  vote         String   // "like" | "dislike"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([commentaryId, sessionId])
+  @@index([commentaryId])
+}
+
+// Optional: contact form submissions.
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+}

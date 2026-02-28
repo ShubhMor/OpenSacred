@@ -1,0 +1,47 @@
+{
+  "name": "OpenSacred — Hindu Scripture Library",
+  "short_name": "OpenSacred",
+  "description": "Read the complete Bhagavad Gita online — Sanskrit, transliteration, English translation, and commentary. Free and ad-free.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#b08439",
+  "background_color": "#ffffff",
+  "categories": ["education", "books", "lifestyle"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Bhagavad Gita Chapters",
+      "short_name": "Chapters",
+      "description": "Browse all 18 chapters",
+      "url": "/chapters",
+      "icons": [{ "src": "/favicon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Search Verses",
+      "short_name": "Search",
+      "description": "Search all Gita verses",
+      "url": "/search",
+      "icons": [{ "src": "/favicon-96x96.png", "sizes": "96x96" }]
+    }
+  ]
+}
