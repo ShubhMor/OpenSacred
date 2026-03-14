@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { SITE_URL, SITE_NAME } from "@/lib/config";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -104,9 +105,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
-
   verification: {
-    google: "tN-RiJWimKkQPqqUyMfrZvS08VnZlLHmY9Ck-5zT3kI",
+    // Add your Google / Bing verification tokens here when you have them
+    // google: "YOUR_GOOGLE_VERIFICATION_TOKEN",
+    // other: { "msvalidate.01": "YOUR_BING_TOKEN" },
   },
 };
 
@@ -198,6 +200,7 @@ export default function RootLayout({
           <Footer />
           <Toaster />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
